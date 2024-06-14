@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jane Doe">
 <meta name="author" content="John Doe">
-<meta name="dcterms.date" content="2024-06-07">
+<meta name="dcterms.date" content="2024-06-14">
 <meta name="keywords" content="key1, key2, key3">
 <meta name="description" content="This document provides a template based on the quarto system for contributions to Computo, using the quarto journal extension, the knitr kernel (R user) and renv to set-up the dependencies.">
 
@@ -209,14 +209,14 @@ ISSN 2824-7795</p>
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">June 7, 2024</p>
+        <p class="date">June 14, 2024</p>
       </div>
     </div>
                                     
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">June 7, 2024</p>
+        <p class="date-modified">June 14, 2024</p>
       </div>
     </div>
       
@@ -659,12 +659,13 @@ R Core Team. 2020. <em>R: A Language and Environment for Statistical Computing</
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.3.3 (2024-02-29)
-Platform: x86_64-conda-linux-gnu (64-bit)
+<pre><code>R version 4.4.0 (2024-04-24)
+Platform: x86_64-pc-linux-gnu
 Running under: Ubuntu 22.04.4 LTS
 
 Matrix products: default
-BLAS/LAPACK: /home/runner/micromamba/envs/r-env/lib/libopenblasp-r0.3.27.so;  LAPACK version 3.12.0
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.10.0 
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.10.0
 
 locale:
  [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       
@@ -676,21 +677,22 @@ time zone: Etc/UTC
 tzcode source: system (glibc)
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
+[1] stats     graphics  grDevices datasets  utils     methods   base     
 
 other attached packages:
 [1] ggplot2_3.5.1
 
 loaded via a namespace (and not attached):
- [1] vctrs_0.6.5       nlme_3.1-164      cli_3.6.2         knitr_1.46       
- [5] rlang_1.1.4       xfun_0.43         jsonlite_1.8.8    labeling_0.4.3   
- [9] glue_1.7.0        colorspace_2.1-0  htmltools_0.5.8.1 scales_1.3.0     
-[13] fansi_1.0.6       rmarkdown_2.26    grid_4.3.3        evaluate_0.23    
-[17] munsell_0.5.1     tibble_3.2.1      fastmap_1.1.1     yaml_2.3.8       
-[21] lifecycle_1.0.4   compiler_4.3.3    pkgconfig_2.0.3   mgcv_1.9-1       
-[25] farver_2.1.2      lattice_0.22-6    digest_0.6.35     R6_2.5.1         
-[29] utf8_1.2.4        splines_4.3.3     pillar_1.9.0      magrittr_2.0.3   
-[33] Matrix_1.6-5      tools_4.3.3       withr_3.0.0       gtable_0.3.5     </code></pre>
+ [1] vctrs_0.6.5       nlme_3.1-163      cli_3.6.2         knitr_1.46       
+ [5] rlang_1.1.3       xfun_0.43         renv_1.0.7        jsonlite_1.8.8   
+ [9] labeling_0.4.3    glue_1.7.0        colorspace_2.1-0  htmltools_0.5.8.1
+[13] scales_1.3.0      fansi_1.0.6       rmarkdown_2.26    grid_4.4.0       
+[17] evaluate_0.23     munsell_0.5.1     tibble_3.2.1      fastmap_1.1.1    
+[21] yaml_2.3.8        lifecycle_1.0.4   compiler_4.4.0    pkgconfig_2.0.3  
+[25] mgcv_1.9-1        farver_2.1.1      lattice_0.22-5    digest_0.6.35    
+[29] R6_2.5.1          utf8_1.2.4        splines_4.4.0     pillar_1.9.0     
+[33] magrittr_2.0.3    Matrix_1.6-5      withr_3.0.0       tools_4.4.0      
+[37] gtable_0.3.5     </code></pre>
 </div>
 </div>
 <!-- -->
@@ -706,7 +708,7 @@ loaded via a namespace (and not attached):
   publisher = {Société Française de Statistique},
   title = {Template for Contribution to {Computo}},
   journal = {Computo},
-  date = {2024-06-07},
+  date = {2024-06-14},
   url = {https://computo.sfds.asso.fr/template-computo-quarto},
   doi = {xxxx},
   issn = {2824-7795},
