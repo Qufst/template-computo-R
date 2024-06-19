@@ -44,7 +44,7 @@ jobs:
         id: convert
         run: |
           cat /home/runner/path_env.sh
-          echo echo "paths=$( jq -crRs '@json' <<< "$path_env.sh ")" >> $GITHUB_OUTPUT
+          echo "paths=$( jq -crRs '@json' <<< "$path_env.sh ")" >> $GITHUB_OUTPUT
 
 
 
