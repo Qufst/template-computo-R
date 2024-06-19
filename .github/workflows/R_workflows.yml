@@ -22,13 +22,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # - name: Install R
-      #   uses: r-lib/actions/setup-r@v2
-      #   with:
-      #     r-version: '4.4.0'
-
-      # - name: Install R Dependencies with renv
-      #   uses: r-lib/actions/setup-renv@v2
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.4.0 '
+      - name: Install R Dependencies with renv
+        uses: r-lib/actions/setup-renv@v2
 
 
       - name: create a script
@@ -37,9 +36,23 @@ jobs:
       - name: create a script with path for cache
         run: touch path_env.sh
 
-      - name: path
+      - name: Convert paths to JSON
+        id: convert
+        env:
+          paths: |
+            /home/runner/work/_temp/renv/
+            ~/renv.lock
+            /home/runner/work/template-computo-R/template-computo-R/.Rprofile
+            /home/runner/.Rprofile
+            /home/runner/work/_temp/Library/renv/resources/activate.R
+            /home/runner/work/template-computo-R/template-computo-R/renv/activate.R
+            /home/runner/work/template-computo-R/template-computo-R/renv/library/linux-ubuntu-jammy/R-4.4/x86_64-pc-linux-gnu/renv/resources/activate.R
+            /home/runner/work/_temp/renv/source/repository/
+            /home/runner/work/_temp/renv/cache/v5/linux-ubuntu-jammy/R-4.4/x86_64-pc-linux-gnu/
+            /home/runner/work/template-computo-R/template-computo-R/renv/library/linux-ubuntu-jammy/R-4.4/x86_64-pc-linux-gnu/
+      
         run: |
-          echo '[\"/home/runner/work/_temp/renv/\",\"~/renv.lock\",\"/home/runner/work/template-computo-R/template-computo-R/.Rprofile\",\"/home/runner/.Rprofile\",\"/home/runner/work/_temp/Library/renv/resources/activate.R\",\"/home/runner/work/template-computo-R/template-computo-R/renv/activate.R\",\"/home/runner/work/template-computo-R/template-computo-R/renv/library/linux-ubuntu-jammy/R-4.4/x86_64-pc-linux-gnu/renv/resources/activate.R\",\"/home/runner/work/_temp/renv/source/repository/\",\"/home/runner/work/_temp/renv/cache/v5/linux-ubuntu-jammy/R-4.4/x86_64-pc-linux-gnu/\",\"/home/runner/work/template-computo-R/template-computo-R/renv/library/linux-ubuntu-jammy/R-4.4/x86_64-pc-linux-gnu/\"]' >> path_env.sh
+          echo "paths=$( jq -crRs '@json' <<< "${{ env.paths }}")" >> path_env.sh
 
 
       - name: Calculate SHA-256 hash and put it in the script

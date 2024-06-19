@@ -41,28 +41,10 @@ jobs:
         run: echo "sha256=$(head -n 1 ${{ runner.temp }}/activate_env.sh | cut -d '=' -f 2)" >> $GITHUB_OUTPUT
 
       - name: Display path_env.sh content
-        run: |
-          echo "Content of path_env.sh:"
-          cat /home/runner/path_env.sh
-
-      - name: Convert paths to JSON
         id: convert
-        env:
-          paths: |
-            /home/runner/work/_temp/renv/
-            ~/renv.lock
-            /home/runner/work/template-computo-R/template-computo-R/.Rprofile
-            /home/runner/.Rprofile
-            /home/runner/work/_temp/Library/renv/resources/activate.R
-            /home/runner/work/template-computo-R/template-computo-R/renv/activate.R
-            /home/runner/work/template-computo-R/template-computo-R/renv/library/linux-ubuntu-jammy/R-4.4/x86_64-pc-linux-gnu/renv/resources/activate.R
-            /home/runner/work/_temp/renv/source/repository/
-            /home/runner/work/_temp/renv/cache/v5/linux-ubuntu-jammy/R-4.4/x86_64-pc-linux-gnu/
-            /home/runner/work/template-computo-R/template-computo-R/renv/library/linux-ubuntu-jammy/R-4.4/x86_64-pc-linux-gnu/
-      
         run: |
-          echo "paths=$( jq -cr --raw-input --slurp 'split("\n") | map(select(length > 0))'  <<< "${{ env.paths }}")"
-          echo "paths=$( jq -cr --raw-input --slurp 'split("\n") | map(select(length > 0))'  <<< "${{ env.paths }}")" >> $GITHUB_OUTPUT
+          cat /home/runner/path_env.sh
+          echo echo "paths=$( jq -crRs '@json' <<< "$path_env.sh ")" >> $GITHUB_OUTPUT
 
 
 
@@ -75,7 +57,7 @@ jobs:
       - name: Restore Cache environment
         uses: actions/cache@v4
         with:
-          path: ${{ fromJSON(steps.convert.outputs.paths) }}
+          path: ${{ fromJson(steps.convert.outputs.paths) }}
           key: ${{ steps.calculate-sha256.outputs.sha256 }}
 
       - name: Set up Quarto
