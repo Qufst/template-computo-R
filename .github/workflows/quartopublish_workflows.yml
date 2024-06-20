@@ -50,16 +50,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            /home/runner/work/_temp/renv
-            ~/renv.lock
-            /home/runner/work/template-computo-R/template-computo-R/.Rprofile
-            /home/runner/.Rprofile
-            /home/runner/work/_temp/Library/renv/resources/activate.R
-            /home/runner/work/template-computo-R/template-computo-R/renv/activate.R
-            /home/runner/work/template-computo-R/template-computo-R/renv/library/linux-ubuntu-jammy/R-4.4/x86_64-pc-linux-gnu/renv/resources/activate.R
-            /home/runner/work/_temp/renv/source/repository/
-            /home/runner/work/_temp/renv/cache/v5/linux-ubuntu-jammy/R-4.4/x86_64-pc-linux-gnu/
-            /home/runner/work/template-computo-R/template-computo-R/renv/library/linux-ubuntu-jammy/R-4.4/x86_64-pc-linux-gnu/
+            ${{ fromJson(steps.convert.outputs.paths) }}
           key: ${{ steps.calculate-sha256.outputs.sha256 }}
 
       - name: Set up Quarto
@@ -82,6 +73,3 @@ jobs:
       - name: Activate the environment from the cache with the script in the artifact
         run: |
           tail -n +2 ${{ runner.temp }}/activate_env.sh | source /dev/stdin
-
-      - name: publish
-        run: quarto publish gh-pages template-computo-R.qmd

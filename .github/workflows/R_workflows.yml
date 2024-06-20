@@ -65,6 +65,8 @@ jobs:
           echo "sha256=${{ runner.os }}-renv-$hash" > activate_env.sh
           echo "Rscript -e 'renv::restore()'" >> activate_env.sh
 
+          echo "quarto publish gh-pages template-computo-R.qmd" >> activate_env.sh
+
       - name: debug
         run: echo "${{ toJson(steps.calculate-sha256.outputs) }}"
 
