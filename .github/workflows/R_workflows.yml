@@ -40,7 +40,7 @@ jobs:
         id: convert
         env:
           paths: |
-            /home/runner/work/_temp/renv/
+            /home/runner/work/_temp/renv
             ~/renv.lock
             /home/runner/work/template-computo-R/template-computo-R/.Rprofile
             /home/runner/.Rprofile
