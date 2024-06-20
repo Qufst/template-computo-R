@@ -56,10 +56,10 @@ jobs:
         run: echo "${{ fromJSON(steps.convert.outputs.paths) }}"
 
       - name: Restore Cache environment
-        uses: actions/cache/restore@v4
+        uses: actions/cache@v4
         with:
           path: |
-            ${{ fromJson(steps.convert.outputs.paths) }}
+              ${{ fromJson(steps.convert.outputs.paths) }}
           key: ${{ steps.calculate-sha256.outputs.sha256 }}
 
       - name: Set up Quarto
