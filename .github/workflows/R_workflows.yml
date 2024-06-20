@@ -59,7 +59,7 @@ jobs:
         id: calculate-sha256
         run: |
           touch .Rprofile
-          hash=$(shasum -a 256 "/home/runner/work/_temp/renv" | awk '{ print $1 }')
+          hash=$(shasum -a 256 ".Rprofile" | awk '{ print $1 }')
           echo "sha256=${{ runner.os }}-renv-$hash" >> $GITHUB_OUTPUT
 
           echo "sha256=${{ runner.os }}-renv-$hash" > activate_env.sh
