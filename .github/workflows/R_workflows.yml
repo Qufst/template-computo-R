@@ -59,7 +59,7 @@ jobs:
         id: calculate-sha256
         run: |
           touch .Rprofile
-          hash=$(shasum -a 256 ".Rprofile" | awk '{ print $1 }')
+          hash=$(shasum -a 256 "/home/runner/work/_temp/Library/renv/resources/activate.R" | awk '{ print $1 }')
           echo "sha256=${{ runner.os }}-renv-$hash" >> $GITHUB_OUTPUT
 
           echo "sha256=${{ runner.os }}-renv-$hash" > activate_env.sh
@@ -83,7 +83,7 @@ jobs:
 
 
       - name: Cache environment
-        uses: actions/cache@v4
+        uses: actions/cache/save@v4
         with:
           path: |
             /home/runner/work/_temp/renv
