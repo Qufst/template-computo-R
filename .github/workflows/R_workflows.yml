@@ -83,7 +83,7 @@ jobs:
 
 
       - name: Cache environment
-        uses: actions/cache@v4
+        uses: actions/cache/save@v4
         with:
           path: |
             /home/runner/work/_temp/renv
@@ -96,6 +96,5 @@ jobs:
             /home/runner/work/_temp/renv/source/repository/
             /home/runner/work/_temp/renv/cache/v5/linux-ubuntu-jammy/R-4.4/x86_64-pc-linux-gnu/
             /home/runner/work/template-computo-R/template-computo-R/renv/library/linux-ubuntu-jammy/R-4.4/x86_64-pc-linux-gnu/
-
           key: ${{ steps.calculate-sha256.outputs.sha256 }}
 
